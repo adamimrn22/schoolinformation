@@ -26,8 +26,7 @@ public class StudentController {
         ApiResponse<List<Student>> response = new ApiResponse<>(
                 true,
                 "Students retrieved successfully",
-                students
-        );
+                students);
         return ResponseEntity.ok(response);
     }
 
@@ -37,8 +36,7 @@ public class StudentController {
         ApiResponse<Student> response = new ApiResponse<>(
                 true,
                 "Student retrieved successfully",
-                student
-        );
+                student);
         return ResponseEntity.ok(response);
     }
 
@@ -48,8 +46,7 @@ public class StudentController {
         ApiResponse<List<Student>> response = new ApiResponse<>(
                 true,
                 "Students from school " + schoolId + " retrieved successfully",
-                students
-        );
+                students);
         return ResponseEntity.ok(response);
     }
 
@@ -59,8 +56,7 @@ public class StudentController {
         ApiResponse<Student> response = new ApiResponse<>(
                 true,
                 "Student with Email " + email + " retrieved successfully",
-                student
-        );
+                student);
         return ResponseEntity.ok(response);
     }
 
@@ -70,32 +66,15 @@ public class StudentController {
         ApiResponse<Student> response = new ApiResponse<>(
                 true,
                 "Student with IC " + identificationNumber + " retrieved successfully",
-                student
-        );
+                student);
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/class/{className}")
-    public ResponseEntity<ApiResponse<List<Student>>> getStudentsByClass(@PathVariable String className) {
-        List<Student> students = studentService.getStudentsByClass(className);
-        ApiResponse<List<Student>> response = new ApiResponse<>(
-                true,
-                "Students from class " + className + " retrieved successfully",
-                students
-        );
-        return ResponseEntity.ok(response);
-    }
-
-    @GetMapping("/school/{schoolId}/class/{className}")
-    public ResponseEntity<ApiResponse<List<Student>>> getStudentsBySchoolAndClass(
-            @PathVariable Long schoolId,
-            @PathVariable String className) {
-        List<Student> students = studentService.getStudentsBySchoolAndClass(schoolId, className);
-        ApiResponse<List<Student>> response = new ApiResponse<>(
-                true,
-                "Students from school " + schoolId + " and class " + className + " retrieved successfully",
-                students
-        );
+    @GetMapping("/{id}/school")
+    public ResponseEntity<ApiResponse<Student>> getStudentWithSchool(@PathVariable Long id) {
+        Student student = studentService.getStudentWithSchool(id);
+        ApiResponse<Student> response = new ApiResponse<>(true, "Student and associated school retrieved successfully",
+                student);
         return ResponseEntity.ok(response);
     }
 }

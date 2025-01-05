@@ -1,6 +1,7 @@
 package com.schoolinfo.schoolinformation.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -17,12 +18,12 @@ public class Student {
     private String identificationNumber;
 
     private Integer age;
-    private String className;
+    private String studentLevel;
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "school_id", nullable = false)
-    @JsonBackReference
+    @JsonManagedReference
     private School school;
 
     // Getters and Setters
@@ -58,12 +59,12 @@ public class Student {
         this.age = age;
     }
 
-    public String getClassName() {
-        return className;
+    public String getStudentLevel() {
+        return studentLevel;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public void setStudentLevel(String studentLevel) {
+        this.studentLevel = studentLevel;
     }
 
     public String getEmail() {

@@ -36,11 +36,9 @@ public class StudentService {
         return studentRepository.findByIdentificationNumber(identificationNumber);
     }
 
-    public List<Student> getStudentsByClass(String className) {
-        return studentRepository.findByClassName(className);
+    public Student getStudentWithSchool(Long id) {
+        return studentRepository.findByIdWithSchool(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Student not found with id: " + id));
     }
 
-    public List<Student> getStudentsBySchoolAndClass(Long schoolId, String className) {
-        return studentRepository.findBySchoolIdAndClassName(schoolId, className);
-    }
 }

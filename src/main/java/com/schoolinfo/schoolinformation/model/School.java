@@ -1,6 +1,6 @@
 package com.schoolinfo.schoolinformation.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -25,15 +25,15 @@ public class School {
     private String district;
 
     @Column(nullable = false)
-    private String state = "Johor";  // Default value
+    private String state = "Johor"; // Default value
 
     private String phoneNumber;
     private String email;
     private String fax;
     private String principalName;
 
-    @OneToMany(mappedBy = "school", fetch = FetchType.LAZY)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "school")
+    @JsonBackReference
     private List<Student> students;
 
     // Getters and Setters
