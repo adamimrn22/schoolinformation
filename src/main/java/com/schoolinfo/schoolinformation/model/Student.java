@@ -20,6 +20,7 @@ public class Student {
     private Integer age;
     private String studentLevel;
     private String email;
+    private String gender;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "school_id", nullable = false)
@@ -49,6 +50,14 @@ public class Student {
 
     public void setIdentificationNumber(String identificationNumber) {
         this.identificationNumber = identificationNumber;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public Integer getAge() {
