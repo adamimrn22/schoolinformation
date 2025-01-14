@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
-  List<Student> findBySchoolId(Long schoolId);
+  List<Student> findBySchoolCode(String schoolCode);
 
   Student findByIdentificationNumber(String identificationNumber);
 

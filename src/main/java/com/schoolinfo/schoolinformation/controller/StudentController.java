@@ -40,12 +40,12 @@ public class StudentController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/school/{schoolId}")
-    public ResponseEntity<ApiResponse<List<Student>>> getStudentsBySchool(@PathVariable Long schoolId) {
-        List<Student> students = studentService.getStudentsBySchool(schoolId);
+    @GetMapping("/school/{schoolCode}")
+    public ResponseEntity<ApiResponse<List<Student>>> getStudentsBySchool(@PathVariable String schoolCode) {
+        List<Student> students = studentService.getStudentsBySchool(schoolCode);
         ApiResponse<List<Student>> response = new ApiResponse<>(
                 true,
-                "Students from school " + schoolId + " retrieved successfully",
+                "Students from school " + schoolCode + " retrieved successfully",
                 students);
         return ResponseEntity.ok(response);
     }

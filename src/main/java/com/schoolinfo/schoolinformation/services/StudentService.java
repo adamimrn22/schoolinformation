@@ -28,8 +28,8 @@ public class StudentService {
         return studentRepository.findByEmail(email);
     }
 
-    public List<Student> getStudentsBySchool(Long schoolId) {
-        return studentRepository.findBySchoolId(schoolId);
+    public List<Student> getStudentsBySchool(String schoolCode) {
+        return studentRepository.findBySchoolCode(schoolCode);
     }
 
     public Student getStudentByIdentificationNumber(String identificationNumber) {
